@@ -40,7 +40,7 @@ A DDPG-based reinforcement learning system for finding optimal operating regimes
 
 - Provides a custom `Gym-compliant` environment built from scratch with `NumPy` and `scQubits` to simulate superconducting qubits, featuring continuous observation and action spaces.
 - Implements a [DDPG](https://arxiv.org/abs/1509.02971)-based continuous control agent from scratch in TensorFlow 2 (Actor, Critic, target networks, learning method) without relying on high-level RL libraries.
-- Packaged as a modular, production-grade Python library following industry best practices.
+- Designed as a modular, production-grade Python package following industry best practices.
 
 ---
 
