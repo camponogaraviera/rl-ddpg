@@ -1,0 +1,33 @@
+name: Lint # The name of the workflow.
+
+on: # Trigger the workflow to run on push or pull request events.
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint: # The name of the first job.
+    runs-on: ubuntu-latest # The operating system (a.k.a runner) on which the job will run.
+    permissions: # The permissions for the job.
+      issues: write
+      pull-requests: write
+    steps: # The steps to be executed in the job.
+      # Checkout the repository:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # -------- Python Linting --------
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11.0" # Should match the version defined in environment.yml.
+
+      - name: Install Python dependencies
+        run: pip install --only-binary=:all: black==26.3.1 flake8==7.3.0
+
+      - name: Run Black
+        run: black --check .
+
+      - name: Run Flake8
+        run: flake8 .

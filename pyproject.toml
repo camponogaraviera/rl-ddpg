@@ -1,0 +1,66 @@
+# This code is part of rl_ddpg.
+#
+# (C) Copyright Lucas Camponogara Viera, 2026.
+#
+# This code is licensed under the Apache 2.0 License.
+# You may obtain a copy of the License in the root directory of this source tree.
+
+# Build backend:
+[build-system]
+requires = ["setuptools>=77, <82"]
+build-backend = "setuptools.build_meta"
+
+# Package metadata:
+[project]
+name = "rl_ddpg"
+authors = [
+    { name = "Lucas Camponogara Viera", email = "vieracamponogara@gmail.com" },
+]
+description = "rl_ddpg | Finding Transmon Qubit Sweet Spots with RL DDPG"
+readme = "README.md"
+requires-python = ">=3.11, <3.12"
+license = "Apache-2.0"               # SPDX expression (PEP 639).
+license-files = ["LICENSE.md"]
+keywords = ["RL", "DDPG", "Transmon", "Regime"]
+classifiers = [                      # https://pypi.org/classifiers/
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = []
+dynamic = ["version"]                # Read from src/rl_ddpg/VERSION.txt.
+
+[project.urls]
+"Bug Tracker" = "https://github.com/camponogaraviera/rl-ddpg/issues"
+"Documentation" = "https://github.com/camponogaraviera/rl-ddpg"
+"Source Code" = "https://github.com/camponogaraviera/rl-ddpg"
+
+# Console script installed as `rl_ddpg`:
+[project.scripts]
+rl_ddpg = "rl_ddpg.cli:main"
+
+# Package discovery (src layout):
+[tool.setuptools]
+platforms = ["Windows", "Linux"]
+include-package-data = true
+
+[tool.setuptools.dynamic]
+version = { file = "src/rl_ddpg/VERSION.txt" }
+
+[tool.setuptools.package-data]
+rl_ddpg = ["VERSION.txt"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["rl_ddpg*"]               # Keep src/scripts out of the distribution.
+namespaces = false                   # Do not package directories without __init__.py.
+
+# Configuration for Black:
+[tool.black]
+line-length = 88
+target-version = ['py311']

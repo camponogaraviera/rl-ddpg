@@ -1,0 +1,27 @@
+#----- VS Code / PyCharm -----#
+
+.vscode/
+.idea/
+
+#----- Byte-compiled / Optimized / DLL files -----# 
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+#----- Pytest -----#
+
+pytest_report.xml
+
+#----- Distribution / Packaging -----#
+
+build/
+dist/
+*.egg-info/
+
+# Editable install markers
+*.egg
+
+#----- Custom -----#
+
+assets/render/
